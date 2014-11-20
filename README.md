@@ -1,4 +1,4 @@
-![](https://github.com/bameyrick/JS-Speed-Test/raw/master/demo/img/logo-32.png) JS Speed Test
+JS Speed Test
 =============
 
 A rudimentary method of testing a user's rough connection speed using javascript.
