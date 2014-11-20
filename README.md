@@ -2,7 +2,7 @@ JS Speed Test
 =============
 
 A rudimentary method of testing a user's rough connection speed using javascript.
-##[Demo](http://bameyrick.co.uk/demos/js-speed-test/index.html)
+##[Demo](http://bameyrick.github.io/JS-Speed-Test/)
 IMPORTANT! Do not use the script file from the demo folder, it has extra guff in there for the demo. Use the [speed-test.min.js](speed-test.min.js) file from the root.
 
 ---
