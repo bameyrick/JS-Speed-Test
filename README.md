@@ -2,6 +2,9 @@ JS Speed Test
 =============
 
 A rudimentary method of testing a user's rough connection speed using javascript.
+
+(note: I've recently noticed a massive difference in the speeds reported when using a large or small file as the test download. This is probably because my maths is rubbish... Will look into this and supply a fix in the future)
+
 ##[Demo](http://bameyrick.github.io/JS-Speed-Test/)
 IMPORTANT! Do not use the script file from the demo folder, it has extra guff in there for the demo. Use the [speed-test.min.js](speed-test.min.js) file from the root.
 
