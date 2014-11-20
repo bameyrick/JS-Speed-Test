@@ -20,7 +20,7 @@ function checkSpeed(file, callback){
 	dl.onload = function(e){
 		et = (new Date()).getTime();
 		var d = (et - st) / 1000;
-		s = ((e.loaded / d) / 65536).toFixed(2);
+		s = ((e.loaded / d) / 131072).toFixed(2);
 		setCookie(s);
 		callback(s)
 	} 
