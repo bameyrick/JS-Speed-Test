@@ -93,46 +93,38 @@
 		    <h2 class="panel-title">Test</h2>
 		  </div>
 		  <div class="panel-body">
-		  		<button class="btn btn-success btn-lg" onclick="test_speed('img/dl.jpg')">Fast Check (rough)</button>
-				<button class="btn btn-danger btn-lg" onclick="test_speed('img/dl_big.png')">Accurate Check (slow)</button>
+		  		<button class="btn btn-success btn-lg" onclick="checkSpeed()">Check Speed</button>
 				<div class="alert alert-danger" id="error" role="alert">A test is already running. Please wait until this one has finished and try again.</div>
-				<div class="progress">
-				  <div class="progress-bar progress-bar-success" id="loading" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
-				</div>
-				<div class="alert alert-warning" id="alert" role="alert">Your connection speed is: <span id="speed"></span>mbps</div>
+				<div class="alert alert-warning" id="alert" role="alert">Your connection speed is: <span id="speed"></span>Kbps</div>
 		  </div>
 		</div>
 		
 
-		<script src="scripts/speed-test.js"></script>
+		<script src="scripts/speed-test.min.js"></script>
 		<script>
 			var testing = false;
 			var a = document.getElementById('alert');
 			var speed = document.getElementById('speed');
 			var loader = document.getElementById("loading");
 			var error = document.getElementById("error");
-			function test_speed(e){
-				if(!testing){
-					loader.style.width= 0;
-					loader.innerHTML = "";
-					loader.className = "progress-bar progress-bar-striped active";
-					a.style.display = "none";
-					testing = true;
-					setTimeout(function(){
-						speedTest(e, true, function (s) {
-					       speed.innerHTML = s;
-					       a.style.display = "block";
-					       testing = false;
-					       loader.className = "progress-bar progress-bar-success";
-					    });
-					},1000)					
-				}else{
-					error.style.opacity = 1;
 
-					setTimeout(function(){
-						error.style.opacity = 0;
-					},5000)
-				}	
+			function checkSpeed() {
+			    if (!testing) {
+			        a.style.display = "none";
+			        testing = true;
+
+			        SpeedTest.CheckSpeed(function (s) {
+			            a.style.display = "block";
+			            testing = false;
+			            speed.innerHTML = s;
+			        }, true)
+			    } else {
+			        error.style.opacity = 1;
+
+			        setTimeout(function () {
+			            error.style.opacity = 0;
+			        }, 5000)
+			    }
 			}
 		</script>
 	</body>
