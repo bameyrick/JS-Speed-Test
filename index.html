@@ -1,131 +1,138 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>JS Speed Test By Ben Meyrick</title>
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="shortcut-icon" href="favicon.ico">
-		<style>
-			body{
-				padding:20px;
-			}
+<head>
+    <title>JS Speed Test By Ben Meyrick</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut-icon" href="favicon.ico">
+    <style>
+        body {
+            padding: 20px;
+        }
 
-			#alert{
-				position:absolute;
-				top:110px;
-				display:none;
-				font-size: 2em;
-				left:15px;
-				right:15px;
-			}
+        #alert {
+            display: none;
+            font-size: 2em;
+            left: 15px;
+            right: 15px;
+        }
 
-			.btn{
-				line-height:1.4em;
-				margin: 5px 10px 0 0;
-			}
+        .btn {
+            line-height: 1.4em;
+            margin: 5px 10px 0 0;
+        }
 
-			.btn i{
-				font-size:1.2em;
-				line-height:1em;
-				margin:0 0 0 10px;
-			}
-			.jumbotron{
-				padding:48px;
-				border-radius:10px;
-			}
-			.progress{
-				margin:30px 0;
-				height:50px;
-			}
-			.progress-bar{
-				line-height: 50px;
-				font-size: 1.5em;
-				opacity: 0;
-				-webkit-transition:all 1s ease-in-out;
-				-moz-transition:all 1s ease-in-out;
-				-o-transition:all 1s ease-in-out;
-				transition:all 1s ease-in-out;
-			}
-			.progress-bar.active{
-				opacity: 1;
-			}
-			#error{
-				display:inline-block;
-				position: relative;
-				top:5px;
-				opacity:0;
-				-webkit-transition:all 1s ease-in-out;
-				-moz-transition:all 1s ease-in-out;
-				-o-transition:all 1s ease-in-out;
-				transition:all 1s ease-in-out;
-			}
-			.panel-body{
-				position: relative;
-			}
-			.panel-title{
-				font-size: 2em;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="jumbotron">
-			<h1>
-				<a href="https://github.com/bameyrick/JS-Speed-Test" target="_blank">JS Speed Test</a> 
-				&nbsp;<small>By <a target="_blank" href="https://github.com/bameyrick">Ben Meyrick</a></small>
-				
-			</h1>
-			<p>
-				<a class="btn btn-info btn-lg" href="https://github.com/bameyrick/JS-Speed-Test" target="_blank">
-					View on GitHub <i class="fa fa-github"></i>
-				</a>
-				<a class="btn btn-info btn-lg" href="https://twitter.com/bameyrick/" target="_blank">
-					Follow on Twitter <i class="fa fa-twitter"></i>
-				</a>
-				<a class="btn btn-info btn-lg" href="http://dribbble.com/bameyrick/" target="_blank">
-					Follow on Dribbble <i class="fa fa-dribbble"></i>
-				</a>
-			</p>
-		</div>
+            .btn i {
+                font-size: 1.2em;
+                line-height: 1em;
+                margin: 0 0 0 10px;
+            }
 
-		<div class="panel panel-primary">
-		  <div class="panel-heading">
-		    <h2 class="panel-title">Test</h2>
-		  </div>
-		  <div class="panel-body">
-		  		<button class="btn btn-success btn-lg" onclick="checkSpeed()">Check Speed</button>
-				<div class="alert alert-danger" id="error" role="alert">A test is already running. Please wait until this one has finished and try again.</div>
-				<div class="alert alert-warning" id="alert" role="alert">Your connection speed is: <span id="speed"></span>Kbps</div>
-		  </div>
-		</div>
-		
+        .jumbotron {
+            padding: 48px;
+            border-radius: 10px;
+        }
 
-		<script src="scripts/speed-test.min.js"></script>
-		<script>
-			var testing = false;
-			var a = document.getElementById('alert');
-			var speed = document.getElementById('speed');
-			var loader = document.getElementById("loading");
-			var error = document.getElementById("error");
+        .progress {
+            margin: 30px 0;
+            height: 50px;
+        }
 
-			function checkSpeed() {
-			    if (!testing) {
-			        a.style.display = "none";
-			        testing = true;
+        .progress-bar {
+            line-height: 50px;
+            font-size: 1.5em;
+            opacity: 0;
+            -webkit-transition: all 1s ease-in-out;
+            -moz-transition: all 1s ease-in-out;
+            -o-transition: all 1s ease-in-out;
+            transition: all 1s ease-in-out;
+        }
 
-			        SpeedTest.CheckSpeed(function (s) {
-			            a.style.display = "block";
-			            testing = false;
-			            speed.innerHTML = s;
-			        }, true)
-			    } else {
-			        error.style.opacity = 1;
+            .progress-bar.active {
+                opacity: 1;
+            }
 
-			        setTimeout(function () {
-			            error.style.opacity = 0;
-			        }, 5000)
-			    }
-			}
-		</script>
-	</body>
+        #error {
+            display: inline-block;
+            position: relative;
+            top: 5px;
+            opacity: 0;
+            -webkit-transition: all 1s ease-in-out;
+            -moz-transition: all 1s ease-in-out;
+            -o-transition: all 1s ease-in-out;
+            transition: all 1s ease-in-out;
+        }
+
+        .panel-body {
+            position: relative;
+        }
+
+        .panel-title {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>
+            <a href="https://github.com/bameyrick/JS-Speed-Test" target="_blank">JS Speed Test</a>
+            &nbsp;<small>By <a target="_blank" href="https://github.com/bameyrick">Ben Meyrick</a></small>
+
+        </h1>
+        <p>
+            <a class="btn btn-info btn-lg" href="https://github.com/bameyrick/JS-Speed-Test" target="_blank">
+                View on GitHub <i class="fa fa-github"></i>
+            </a>
+            <a class="btn btn-info btn-lg" href="https://twitter.com/bameyrick/" target="_blank">
+                Follow on Twitter <i class="fa fa-twitter"></i>
+            </a>
+            <a class="btn btn-info btn-lg" href="http://dribbble.com/bameyrick/" target="_blank">
+                Follow on Dribbble <i class="fa fa-dribbble"></i>
+            </a>
+        </p>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2 class="panel-title">Test</h2>
+        </div>
+        <div class="panel-body">
+            <p>This test does not give return an accurate speed, it's a rough estimate to give you an idea of what size and quality assets you should be serving up to your users.</p>
+            <button class="btn btn-success btn-lg" onclick="checkSpeed()">Check Speed</button>
+            <div class="alert alert-danger" id="error" role="alert">A test is already running. Please wait until this one has finished and try again.</div>
+            <div class="alert alert-warning" id="alert" role="alert">Your connection speed is roughly: <span id="speed"></span>Kbps</div>
+        </div>
+    </div>
+
+
+    <script src="scripts/speed-test.min.js"></script>
+    <script>
+        var testing = false;
+        var a = document.getElementById('alert');
+        var speed = document.getElementById('speed');
+        var loader = document.getElementById("loading");
+        var error = document.getElementById("error");
+
+        function checkSpeed() {
+            if (!testing) {
+                a.style.display = "none";
+                testing = true;
+
+                SpeedTest.CheckSpeed(function (s) {
+                    a.style.display = "block";
+                    testing = false;
+                    speed.innerHTML = s;
+                    error.style.opacity = 0;
+                }, true)
+            } else {
+                error.style.opacity = 1;
+
+                setTimeout(function () {
+                    error.style.opacity = 0;
+                }, 5000)
+            }
+        }
+    </script>
+</body>
 </html>
