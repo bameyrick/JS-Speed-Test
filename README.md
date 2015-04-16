@@ -1,33 +1,39 @@
 JS Speed Test
 =============
 
-A rudimentary method of testing a user's rough connection speed using javascript.
+A rudimentary method of testing a user's rough connection speed using javascript. The returned value is in Kbps, however it's not very accurate, it's more of a rough idea, as it does not consider network latency. S
 
 ##[Demo](http://bameyrick.github.io/JS-Speed-Test/)
-IMPORTANT! Do not use the script file from the demo folder, it has extra guff in there for the demo. Use the [speed-test.min.js](speed-test.min.js) file from the root.
+You can use network conditioning in Chrome Dev Tools to try different speeds and see what values are returned.
 
 ---
 ##Usage
 
-This is a very basic tool as it's very light (minified 2Kb). Despite this the script has a few useful features:
+This is a very basic tool as it's very light (minified 2Kb). SpeedTest also features caching, where results are cached for a certain length of time. On slow connections the value is cached for longer, on faster connections the value is cached for less time. This means that tests aren't run often when a user has a poor connection (i.e. 2G), saving bandwidth, but if a user has a good connection (e.g. 4G or Fiber), the tests are run more often, incase the user shifts connection from say Wifi to 2G, giving you an up to date value sooner, meaning your website or app can adapt its content earlier.
 
+##### Getting and Setting Options
+At the moment there is only one option, and that is "maxTime". This setting will force SpeedTest to finish testing and return its best value after a certain length of time (in milliseconds). SpeedTest may finish the whole test before this time but this is a sure fire way that you get a value returned within a specified timeframe. Default maxTime is 2000.
 
-#####Set your own download file 
-Depending on your accuracy / speed requirements you can specify your own download file to test with.
-
-##### Cache result in cookies
-You can select whether you want to cache test results in a cookie. This is very useful for slow connections where tests take a long time. The script sets an appropriate expiration time depending on the detected speed (slow = long expiration, fast = short expiration). If the cookie exists the script will return the cached value, once the cookie expires it will test again.
+###### Getting Options
+```javascript
+SpeedTest.Options();
+```
+###### Setting Options
+```javascript
+SpeedTest.Options({
+    maxTime: 3000
+});
+```
 
 #####Callback
 You can specify your own function to be called upon completion of the speed test.
 
 
-
-### Example
+### Example Call
 
 SpeedTest.CheckSpeed(callback, override);
 
-override boolean paramater does a fresh test.
+The override boolean is optional, but if set to true it forces SpeedTest to run a new test, rather than returning a cached value (if the cached value has not yet expired).
 
 ```javascript
 
