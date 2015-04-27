@@ -1,5 +1,5 @@
 ﻿/*
- * JS Speed Test - 1.0.2
+ * JS Speed Test - 1.0.3
  * Ben Meyrick - http://bameyrick.co.uk
  * 
  * Licensed under the MIT license.
@@ -14,7 +14,7 @@
     },
 
     images = [
-	    { name: "NJdf53v.png", timeout: 1400 },
+	    { name: "NJdf53v.png", timeout: 2000 },
 	    { name: "LBb4FWs.png", timeout: 1200 },
 	    { name: "EOfOOWU.png", timeout: 1300 },
 	    { name: "WSFyzlx.png", timeout: 1500 },
@@ -111,6 +111,11 @@
             }
 
             var speed = Math.round((sum / l) / 125);
+
+            if (speed = 'NaN') {
+                speed = 0;
+            }
+
             if (callback) {
                 callback(speed);
             }
