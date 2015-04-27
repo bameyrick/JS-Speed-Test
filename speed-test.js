@@ -1,5 +1,5 @@
 ﻿/*
- * JS Speed Test - 1.0.1
+ * JS Speed Test - 1.0.2
  * Ben Meyrick - http://bameyrick.co.uk
  * 
  * Licensed under the MIT license.
@@ -9,28 +9,33 @@
 (function (SpeedTest) {
 
     var config = {
-        maxTime: 2000
+        maxTime: 2000,
+        baseUrl: "/images/speed-test/"
     },
 
     images = [
-	    { name: "NJdf53v.png", size: 11773, timeout: 1400 },
-	    { name: "LBb4FWs.png", size: 40836, timeout: 1200 },
-	    { name: "EOfOOWU.png", size: 165544, timeout: 1300 },
-	    { name: "WSFyzlx.png", size: 382946, timeout: 1500 },
-	    { name: "EaDz5qx.jpg", size: 1236278, timeout: 1200 },
-        { name: "bQnWhRY.jpg", size: 4511798, timeout: 1200 },
-	    { name: "cFCdlwi.jpg", size: 9092136, timeout: 1200 }
-
+	    { name: "NJdf53v.png", timeout: 1400 },
+	    { name: "LBb4FWs.png", timeout: 1200 },
+	    { name: "EOfOOWU.png", timeout: 1300 },
+	    { name: "WSFyzlx.png", timeout: 1500 },
+	    { name: "EaDz5qx.jpg", timeout: 1200 },
+        { name: "bQnWhRY.jpg", timeout: 1200 },
+	    { name: "cFCdlwi.jpg", timeout: 1200 }
+	   
     ];
 
     var timer, limiter, dl;
 
     SpeedTest.Options = function (options) {
-
+        
         if (options) {
 
             if (options.maxTime) {
                 config.maxTime = options.maxTime;
+            }
+
+            if (options.baseUrl) {
+                config.baseUrl = options.baseUrl;
             }
         }
 
@@ -77,7 +82,7 @@
                 }
             };
 
-            dl.open("GET", "http://i.imgur.com/" + image.name + "?" + st, true);
+            dl.open("GET", config.baseUrl + image.name + "?" + st, true);
             dl.send();
 
             timer = setTimeout(function () {
@@ -109,7 +114,7 @@
             if (callback) {
                 callback(speed);
             }
-            setCookie(speed);
+            setCookie(speed);        
         }
     }
 
@@ -144,7 +149,7 @@
 
         expiry.setTime(expires);
         document.cookie = "connectionspeed=" + speed + ";expires=" + expiry.toGMTString() + "; path=/";
-
+        
     }
 
     function getCookie(c_name) {
