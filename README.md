@@ -12,7 +12,8 @@ You can use network conditioning in Chrome Dev Tools to try different speeds and
 ##Usage
 
 ##### Getting and Setting Options
-At the moment there is only one option, and that is "maxTime". This setting will force SpeedTest to finish testing and return its best value after a certain length of time (in milliseconds). SpeedTest may finish the whole test before this time but this is a sure fire way that you get a value returned within a specified timeframe. Default maxTime is 2000.
+At the moment there is only two options, they are "maxTime" and "baseUrl". MaxTime will force SpeedTest to finish testing and return its best value after a certain length of time (in milliseconds). SpeedTest may finish the whole test before this time but this is a sure fire way that you get a value returned within a specified timeframe. Default maxTime is 2000.
+BaseURL is a reference to where the test images are located.
 
 ###### Getting Options
 ```javascript
@@ -21,7 +22,8 @@ SpeedTest.Options();
 ###### Setting Options
 ```javascript
 SpeedTest.Options({
-    maxTime: 3000
+    maxTime: 3000,
+    baseUrl : "/img/speed-test/"
 });
 ```
 
