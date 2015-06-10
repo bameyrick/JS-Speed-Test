@@ -1,5 +1,5 @@
 ﻿/*
- * JS Speed Test - 1.0.4
+ * JS Speed Test - 1.0.5
  * Ben Meyrick - http://bameyrick.co.uk
  * 
  * Licensed under the MIT license.
@@ -112,7 +112,7 @@
 
             var speed = Math.round((sum / l) / 125);
 
-            if (speed == 'NaN') {
+            if (isNaN(speed)) {
                 speed = 0;
             }
 
