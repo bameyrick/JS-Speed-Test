@@ -114,6 +114,10 @@
         var loader = document.getElementById("loading");
         var error = document.getElementById("error");
 
+        SpeedTest.Options({
+            baseUrl: '/images/'
+        });
+
         function checkSpeed() {
             if (!testing) {
                 a.style.display = "none";
