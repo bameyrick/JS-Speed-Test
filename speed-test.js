@@ -1,5 +1,5 @@
 ﻿/*
- * JS Speed Test - 1.0.4
+ * JS Speed Test - 1.0.5
  * Ben Meyrick - http://bameyrick.co.uk
  * 
  * Licensed under the MIT license.
@@ -21,13 +21,13 @@
 	    { name: "EaDz5qx.jpg", timeout: 1200 },
         { name: "bQnWhRY.jpg", timeout: 1200 },
 	    { name: "cFCdlwi.jpg", timeout: 1200 }
-	   
+
     ];
 
     var timer, limiter, dl;
 
     SpeedTest.Options = function (options) {
-        
+
         if (options) {
 
             if (options.maxTime) {
@@ -112,14 +112,14 @@
 
             var speed = Math.round((sum / l) / 125);
 
-            if (speed == 'NaN') {
+            if (isNaN(speed)) {
                 speed = 0;
             }
 
             if (callback) {
                 callback(speed);
             }
-            setCookie(speed);        
+            setCookie(speed);
         }
     }
 
@@ -154,7 +154,7 @@
 
         expiry.setTime(expires);
         document.cookie = "connectionspeed=" + speed + ";expires=" + expiry.toGMTString() + "; path=/";
-        
+
     }
 
     function getCookie(c_name) {
