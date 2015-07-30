@@ -1,5 +1,5 @@
 ﻿/*
- * JS Speed Test - 1.0.5
+ * JS Speed Test - 1.0.6
  * Ben Meyrick - http://bameyrick.co.uk
  * 
  * Licensed under the MIT license.
@@ -10,7 +10,7 @@
 
     var config = {
         maxTime: 2000,
-        baseUrl: "/images/speed-test/"
+        baseUrl: "/images/speed-test/",
     },
 
     images = [
@@ -82,7 +82,7 @@
                 }
             };
 
-            dl.open("GET", config.baseUrl + image.name + "?" + st, true);
+            dl.open("GET", config.baseUrl + image.name + "?ipignore=true&" + st, true);
             dl.send();
 
             timer = setTimeout(function () {
