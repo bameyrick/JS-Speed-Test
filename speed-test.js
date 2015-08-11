@@ -1,5 +1,5 @@
 ﻿/*
- * JS Speed Test - 1.0.6
+ * JS Speed Test - 1.0.7
  * Ben Meyrick - http://bameyrick.co.uk
  * 
  * Licensed under the MIT license.
@@ -54,8 +54,7 @@
     function checkSpeed(callback) {
         var speeds = [],
            i = 0,
-           done = false,
-           speed;
+           done = false;
 
         function runTest() {
             var image = images[i],
@@ -95,7 +94,7 @@
 
         runTest()
 
-        var limiter = setTimeout(function () {
+        limiter = setTimeout(function () {
             done = true;
             dl.abort();
             clearTimeout(timer);
@@ -124,10 +123,8 @@
     }
 
     function setCookie(speed) {
-        var expiry = new Date();
-        var expires = expiry.getTime();
-
-        var speedText = "unknown";
+        var expiry = new Date(),
+            expires = expiry.getTime();
 
         if (speed <= 250) {
             /* expires in 5 mins */
